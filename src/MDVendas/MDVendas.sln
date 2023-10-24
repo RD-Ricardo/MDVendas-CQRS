@@ -7,15 +7,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{81
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendas", "Vendas", "{153AFEF6-642A-4FDF-829E-826730B3F739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDVendas.Vendas.Domain", "MDVendas.Vendas.Domain\MDVendas.Vendas.Domain.csproj", "{12614519-93BD-4EA4-BF96-F589DB376608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDVendas.Vendas.Domain", "MDVendas.Vendas.Domain\MDVendas.Vendas.Domain.csproj", "{12614519-93BD-4EA4-BF96-F589DB376608}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5A34700A-5CB6-4CF4-9E9E-CCA1C275DAD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDVendas.Core", "MDVendas.Core\MDVendas.Core.csproj", "{F5BF848D-294D-4F2F-9556-F0576AC01418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDVendas.Core", "MDVendas.Core\MDVendas.Core.csproj", "{F5BF848D-294D-4F2F-9556-F0576AC01418}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDVendas.Vendas.Application", "MDVendas.Vendas.Application\MDVendas.Vendas.Application.csproj", "{14BAD720-5EA2-4D5C-A003-9C94DC40D898}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDVendas.Vendas.Application", "MDVendas.Vendas.Application\MDVendas.Vendas.Application.csproj", "{14BAD720-5EA2-4D5C-A003-9C94DC40D898}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5BF848D-294D-4F2F-9556-F0576AC01418} = {F5BF848D-294D-4F2F-9556-F0576AC01418}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDVendas.Vendas.Data", "MDVendas.Vendas.Data\MDVendas.Vendas.Data.csproj", "{3A42A39C-7962-42AE-A915-CA8B484203BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDVendas.Vendas.Data", "MDVendas.Vendas.Data\MDVendas.Vendas.Data.csproj", "{3A42A39C-7962-42AE-A915-CA8B484203BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDVendasAPI", "MDVendasAPI\MDVendasAPI.csproj", "{423E3EF3-A71F-47BE-B44B-AD0793F73753}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +44,10 @@ Global
 		{3A42A39C-7962-42AE-A915-CA8B484203BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A42A39C-7962-42AE-A915-CA8B484203BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A42A39C-7962-42AE-A915-CA8B484203BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423E3EF3-A71F-47BE-B44B-AD0793F73753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423E3EF3-A71F-47BE-B44B-AD0793F73753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423E3EF3-A71F-47BE-B44B-AD0793F73753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423E3EF3-A71F-47BE-B44B-AD0793F73753}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

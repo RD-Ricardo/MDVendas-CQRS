@@ -72,5 +72,101 @@ namespace MDVendas.Vendas.Domain
             Desconto = desconto;
 
         }
+
+        public bool PedidoItemExistente(PedidoItem item)
+        {
+            return _pedidoItems.Any(p => p.ProdutoId == item.ProdutoId);
+        }
+
+        public void AdicionarItem(PedidoItem item)
+        {
+            if (!item.EhValido()) return;
+
+
+            item.AssociarPèdido(Id);
+
+            if (PedidoItemExistente(item))
+            {
+                var itemExistente = _pedidoItems.FirstOrDefault(p => p.ProdutoId == item.ProdutoId);
+                itemExistente.AdicionarUnidade(item.Quantidade);
+                item = itemExistente;
+
+                _pedidoItems.Remove(itemExistente);
+            }
+
+            item.CalcularValor();
+            _pedidoItems.Add(item);
+
+            CalcularValorPedido();
+;       }
+
+        public void RemoverItem(PedidoItem item)
+        {
+            if (!item.EhValido()) return;
+
+            var itemExistente = PedidoItems.FirstOrDefault(x => x.ProdutoId == item.ProdutoId);
+
+            if (itemExistente == null) throw new Exception("o item não pertence ao pedido");
+
+            _pedidoItems.Remove(itemExistente);
+
+            CalcularValorPedido();
+        }
+
+
+        public void AtualizarItem(PedidoItem item)
+        {
+            if (!item.EhValido()) return;
+            item.AssociarPèdido(Id);
+
+            var itemExistente = PedidoItems.FirstOrDefault(x => x.ProdutoId == item.ProdutoId);
+
+            if (itemExistente == null) throw new Exception("o item não pertence ao pedido");
+
+            _pedidoItems.Remove(itemExistente);
+            _pedidoItems.Add(itemExistente);
+
+            CalcularValorPedido();
+        }
+
+        public void AtualizarUnidades(PedidoItem item, int unidades)
+        {
+            item.AtualizarUnidades(unidades);
+            AtualizarItem(item);
+        }
+
+        public void TornarRascunho()
+        {
+            PedidoStatus = PedidoStatus.Rascunho;
+        }
+
+        public void IniciarPedido()
+        {
+            PedidoStatus = PedidoStatus.Iniciado;
+        }
+
+        public void FinalizarPedido()
+        {
+            PedidoStatus = PedidoStatus.Pago;
+        }
+
+        public void CancelarPedido()
+        {
+            PedidoStatus = PedidoStatus.Cancelado;
+        }
+
+
+        public static class PedidoFactory 
+        { 
+            public static Pedido NovoPedidoRascunho(Guid clienteId)
+            {
+                return new Pedido
+                {
+                    ClienteId = clienteId,
+                    PedidoStatus = PedidoStatus.Rascunho
+                };
+            }        
+        }
+
     }
 }
